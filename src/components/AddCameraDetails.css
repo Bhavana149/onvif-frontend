@@ -1,0 +1,73 @@
+.add-camera-container {
+  max-width: 600px; /* Adjust max-width as needed */
+  margin-left: 20px; /* Adjust margin-left as needed */
+  padding: 20px;
+}
+
+.add-camera-heading-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc; /* Add border */
+  background-color: lightblue;
+  padding: 10px; /* Add padding */
+  border-radius: 5px;
+}
+
+.add-camera-heading {
+  text-align: center;
+  margin-right: 10px; /* Adjust margin as needed */
+}
+
+.add-camera-icon {
+  cursor: pointer;
+  font-size: 24px;
+  border: none;
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  padding: 5px 10px; /* Adjust padding as needed */
+  border-radius: 5px; /* Adjust border radius for rounded corners */
+  outline: none; /* Remove outline on focus */
+}
+
+  
+  .add-camera-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-camera-details label {
+    margin-bottom: 5px;
+  }
+  
+  .add-camera-details input {
+    margin-bottom: 10px;
+    padding: 8px;
+  }
+  
+  .add-camera-details button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-camera-details button:hover {
+    background-color: #0056b3;
+  }
+  
+  .success-message {
+    color: green;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .add-camera-details label,
+    .add-camera-details input,
+    .add-camera-details button {
+      width: 100%;
+    }
+  }
+  
+  

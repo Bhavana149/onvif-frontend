@@ -1,0 +1,42 @@
+.signup-btn {
+    border: none;
+    background-color: #070d82;
+    color: white;
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+.signup-title {
+    border-bottom: 3px solid #070d82;
+}
+
+.signup-container {
+    background-color: white;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    width: 420px;
+    padding: 20px; /* Adjust padding as needed */
+}
+
+.form-floating {
+    margin-bottom: 20px; /* Adjust margin between form fields */
+}
+
+/* Additional styles can be added as needed */
+.white-border {
+    background-color: white;
+    border: 3px solid #ccc; /* Adjust the border width as needed */
+    border-radius: 5px;
+    width: 420px;
+  }
+  
+
+  .heading-flex{
+
+    background-color:#06060639;
+    border: 3px solid #ccc; /* Adjust the border width as needed */
+    border-radius: 5px;
+    color: white;
+    
+    
+  }

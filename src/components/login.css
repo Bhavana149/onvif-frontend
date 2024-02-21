@@ -1,0 +1,27 @@
+.login-btn{
+    border: none;
+    background-color: #070d82;
+    color: white;
+    width: 100%;
+    font-size: 1.2rem;
+
+}
+
+.login-title{
+    border-bottom: 3px solid #070d82;
+
+}
+
+.login-container{
+    background-color: #f1f2f8;
+}
+
+.heading-flex{
+
+    background-color:#06060639;
+    border: 3px solid #ccc; /* Adjust the border width as needed */
+    border-radius: 5px;
+    color: white;
+    
+    
+  }

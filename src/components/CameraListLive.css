@@ -1,0 +1,23 @@
+
+.livecambucket{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.camleft{
+  /* width:40px;  */
+  margin-right: 300px;
+}
+
+.cambutton{
+  padding: 10px 10px;
+  margin-bottom: 30px;
+}
+
+.closebutton{
+  background-color: red;
+  color: aliceblue;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
