@@ -1,41 +1,43 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './components/Store';
 import React, { useState } from 'react';
-import './App.css';
-import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './components/pages/Home';
 import Onvif from './components/pages/Onvif';
 import Livestream from './components/pages/LiveStream';
 import Login from './components/login';
 import SignUp from './components/signup';
+import Layout from './components/Layout';
+import Navbar from './components/Navbar';
 import { CameraProvider } from './components/CameraContext';
+import './App.css';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  }
-
-  const handleSignOut = () => {
-    setIsLoggedIn(false);
-  }
-
+  
+  
   return (
-    <Router>
-      <CameraProvider>
-        {isLoggedIn && <Navbar handleSignOut={handleSignOut} setIsLoggedIn={setIsLoggedIn} />}
-        <Routes>
-          <Route
-            path="/"
-            element={!isLoggedIn ? <Login handleLogin={handleLogin} /> : <Navigate to="/home" replace />}
-          />
-          <Route path="/home" element={<Home />} />
-          <Route path="/onvif" element={<Onvif />} />
-          <Route path="/livestream" element={<Livestream />} />
-          <Route path="/signup" element={<SignUp handleLogin={handleLogin} />} />
-        </Routes>
-      </CameraProvider>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <CameraProvider>
+          {/* Navbar */}
+          {isLoggedIn && <Navbar />}
+          <Routes>
+            {/* Login page */}
+            <Route path="/" element={<Login/>} />
+
+            {/* Home page */}
+            <Route path="/home" element={<Layout><Home /></Layout>} />
+
+            {/* Other routes */}
+            <Route path="/onvif" element={<Layout><Onvif /></Layout>} />
+            <Route path="/livestream" element={<Layout><Livestream /></Layout>} />
+            <Route path="/signup" element={<Layout><SignUp /></Layout>} />
+          </Routes>
+        </CameraProvider>
+      </Router>
+    </Provider>
   );
 }
 
