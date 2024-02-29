@@ -19,7 +19,7 @@
   flex: 1; /* Set flex to 1 to allow resizing */
   padding: 20px;
   background-color: rgb(6, 6, 107); /* Blue background color */
-  color: #ffffff; /* White text color */
+  color: black; /* White text color */
   max-width: 300px;
   min-height: 1000px;
   
@@ -89,7 +89,7 @@
 }
 
 .deleteIcon {
-  color: #dc3545; /* Delete icon color */
+  color: #d11531; /* Delete icon color */
   cursor: pointer;
 }
 
@@ -184,3 +184,27 @@
   color: white;
 }
 
+.deleteheading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: whitesmoke;
+  color: rgb(243, 240, 240);
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 9999;
+  display: flex;
+  height: 200px;
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.deleteheading h2 {
+  color: #333;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}

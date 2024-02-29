@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './CameraListLive.css';
-import { FaTrash } from 'react-icons/fa';
+import { FaEllipsisV } from 'react-icons/fa'; // Using three dots icon
 import CameraContext from './CameraContext';
 import axios from 'axios';
 
@@ -9,9 +9,9 @@ function CameraListLive() {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [cameraToDelete, setCameraToDelete] = useState(null);
   const { cameras, setCameras } = useContext(CameraContext);
-  const [videoStream, setVideoStream] = useState('');
   const [isDeleted, setIsDeleted] = useState(false);
-  const [videoError, setVideoError] = useState(false);
+  const [showOptionsMenu, setShowOptionsMenu] = useState(null);
+  const [selectedCameraId, setSelectedCameraId] = useState(null);
 
   useEffect(() => {
     axios.get(process.env.REACT_APP_BASE_URL + process.env.REACT_APP_GET_CAMERA)
@@ -42,17 +42,8 @@ function CameraListLive() {
   };
 
   const fetchVideoStream = (id) => {
+    setSelectedCameraId(id);
     setShowCam(true);
-
-    axios.get(process.env.REACT_APP_BASE_URL + process.env.REACT_APP_RTSP, { params: { id: id } })
-      .then(response => {
-        setVideoStream(response.data.rtsp_url);
-        console.log('RTSP URL:', response.data.rtsp_url);
-      })
-      .catch(error => {
-        console.error('Error fetching RTSP URL:', error);
-        setVideoError(true);
-      });
   };
 
   const handleDeleteConfirmation = (camera) => {
@@ -63,6 +54,10 @@ function CameraListLive() {
   const handleDelete = () => {
     onDeleteCamera();
     setShowDeleteConfirmation(false);
+  };
+
+  const handleOptionMenuClick = (camera) => {
+    setShowOptionsMenu(camera.id === showOptionsMenu ? null : camera.id);
   };
 
   return (
@@ -79,14 +74,21 @@ function CameraListLive() {
                 >
                   {cam.camera_name}
                 </button>
-                <span onClick={() => handleDeleteConfirmation(cam)} className='deleteIcon'><FaTrash /></span>
+                <span onClick={() => handleOptionMenuClick(cam)} className='optionIcon'><FaEllipsisV /></span>
+                {showOptionsMenu === cam.id && (
+                  <div className="optionMenu">
+                    <ul>
+                      <li onClick={() => handleDeleteConfirmation(cam)} style={{ cursor: 'pointer' }}>Delete</li>
+                    </ul>
+                  </div>
+                )}
               </div>
             </li>
           ))}
         </ul>
       </div>
       <div className='camright'>
-        {showCam && !videoError && (
+        {showCam && selectedCameraId && (
           <>
             <button
               onClick={() => { setShowCam(false); }}
@@ -95,28 +97,24 @@ function CameraListLive() {
               Close
             </button>
             <div className='cont'>
-              <video
-                src={videoStream}
-                controls
-                autoPlay
+              <img
+                src={`http://192.168.29.138:8001/myapp/live-stream/?id=${selectedCameraId}`}
                 width='100%'
                 height='100%'
+                alt=''
               />
             </div>
           </>
         )}
-        {videoError && <div>Error loading video stream.</div>}
       </div>
       {showDeleteConfirmation && (
         <div className='deleteheading'>
           <h2>Delete Camera</h2>
-          <div className="deleteConfirmation">
-            <div className="confirmationMessage">
-              <p>Are you sure you want to delete the {cameraToDelete.camera_name}?</p>
-              <div className="confirmationButtons">
-                <button onClick={handleDelete} className="yesButton">Yes</button>
-                <button onClick={() => setShowDeleteConfirmation(false)} className="noButton">No</button>
-              </div>
+          <div className="confirmationMessage">
+            <p>Are you sure you want to delete the {cameraToDelete.camera_name}?</p>
+            <div className="confirmationButtons">
+              <button onClick={handleDelete} className="yesButton">Yes</button>
+              <button onClick={() => setShowDeleteConfirmation(false)} className="noButton">No</button>
             </div>
           </div>
         </div>
