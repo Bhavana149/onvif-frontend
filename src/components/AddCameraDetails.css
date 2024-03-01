@@ -1,17 +1,30 @@
-.add-camera-container {
-  max-width: 600px; /* Adjust max-width as needed */
-  margin-left: 20px; /* Adjust margin-left as needed */
-  padding: 20px;
+.add-camera-heading-container {
+  display: flex;
+  align-items: flex-start;
+  margin-top: -530px;
+  margin-right: 1370px; /* Align items to the top */
 }
+
+.add-camera-box {
+  margin-right: 10px; /* Add some spacing between the button and the modal */
+}
+
+.add-camera-heading {
+  font-size: 16px; /* Reduce font size */
+  margin: 0; /* Remove margin */
+  padding: 5px; /* Add padding */
+}
+
 
 .add-camera-heading-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 1px solid #ccc; /* Add border */
-  background-color: lightblue;
+  background-color: white;
   padding: 10px; /* Add padding */
   border-radius: 5px;
+  color: black;
 }
 
 .add-camera-heading {
@@ -23,8 +36,8 @@
   cursor: pointer;
   font-size: 24px;
   border: none;
-  background-color: #007bff; /* Button background color */
-  color: white; /* Button text color */
+  background-color: white; /* Button background color */
+  color: black; /* Button text color */
   padding: 5px 10px; /* Adjust padding as needed */
   border-radius: 5px; /* Adjust border radius for rounded corners */
   outline: none; /* Remove outline on focus */
@@ -60,6 +73,9 @@
   .success-message {
     color: green;
     text-align: center;
+  }
+  .mandatory {
+    color: red; /* Make the asterisk red */
   }
   
   @media screen and (max-width: 768px) {

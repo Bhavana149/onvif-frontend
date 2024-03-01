@@ -1,4 +1,3 @@
-/* CameraListLive.css */
 .heading-background {
   background-color: white;
   padding: 10px;
@@ -9,6 +8,56 @@
   color: black;
   -ms-flex-align: start;
 }
+/* CameraListLive.css */
+
+/* Apply styles to the table */
+.camera-table {
+  width: 90%; /* Use full width of the container */
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border: 2px solid #fff; /* Add border with white color */
+}
+
+/* Apply styles to table header cells */
+.camera-table th {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-align: left;
+  border: 2px solid white; /* Add border with white color */
+}
+
+/* Apply styles to table body cells */
+.camera-table td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 2px solid #fff; /* Add border with white color */
+}
+
+/* Apply styles to table header row */
+.camera-table thead th {
+  background-color: #55608f;
+}
+
+/* Apply styles to table body row on hover */
+.camera-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Apply styles to table body cells on hover */
+.camera-table tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
+}
+
 
 .livecambucket {
   display: flex;
@@ -25,31 +74,19 @@
   
 }
 
-.camColumn {
-  flex: 1; /* Set flex to 1 to allow resizing */
+.p-dialog-content,
+.p-dialog-header {
+  background-color: white; /* Set background color to white */
+  color: black; /* Set text color to black */
   padding: 20px;
-  background-color: rgb(6, 6, 107); /* Blue background color */
-  color: #ffffff; /* White text color */
-  max-width: 300px;
-  overflow-y: auto; /* Enable vertical scroll */
 }
 
-/* Customize scrollbar */
-.camColumn::-webkit-scrollbar {
-  width: 10px; /* Set the width of the scrollbar */
+.p-dialog-header .p-dialog-titlebar-close .p-dialog-titlebar-icon {
+  color: red; /* Set close button color to red */
 }
 
-.camColumn::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Set the background color of the track */
-}
 
-.camColumn::-webkit-scrollbar-thumb {
-  background: #888; /* Set the color of the scrollbar thumb */
-}
 
-.camColumn::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Set the color of the scrollbar thumb on hover */
-}
 
 
 .camright {

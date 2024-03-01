@@ -5,6 +5,9 @@ import { setLogin } from './Reducer';
 import { Link } from 'react-router-dom';
 import './login.css';
 
+// Import your logo image
+import logo from './logo.png'; // Replace 'your-logo.png' with the actual path to your logo image
+
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,6 +32,8 @@ function Login() {
     <div className="vh-100" style={{ backgroundImage: `url('https://png.pngtree.com/thumb_back/fh260/background/20230623/pngtree-blurred-background-of-retail-shop-with-3d-cctv-or-security-camera-image_3659361.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
       <div style={{width:"90vw",height:"100vh"}} className="d-flex flex-column justify-content-center align-items-end">
         <div className="mb-4"></div> {/* Space */}
+        {/* Add the logo here */}
+        <img src={logo} alt="Logo" className="login-logo" />
         <form className="col-12 col-md-6 py-4 px-3 white-border" style={{width:"max-content"}} onSubmit={handleSubmit}>
           <h2 className="mb-3">Shyena Camera Management </h2>
           <div className="form-floating mb-3">

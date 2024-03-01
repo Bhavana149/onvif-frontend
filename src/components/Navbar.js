@@ -41,22 +41,14 @@ function Navbar({ handleSignOut }) {
                 Home
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link
-                to='/onvif'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Add Camera
-              </Link>
-            </li>
+            
             <li className='nav-item'>
               <Link
                 to='/livestream'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Live Stream
+                Cameras
               </Link>
             </li>
             <li>

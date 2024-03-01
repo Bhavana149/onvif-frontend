@@ -7,7 +7,6 @@ function Livestream() {
 
   return (
     <div>
-      <h3>Select the Camera to view the live stream </h3>
       <CameraListLive cameras={cameras} setCameras={setCameras} /> {/* Pass setCameras as a prop */}
     </div>
   );

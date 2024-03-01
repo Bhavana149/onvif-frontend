@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { Modal, Button } from 'react-bootstrap'; // Import modal component from React Bootstrap
 import './AddCameraDetails.css'; // Import your CSS file
 
 function AddCameraDetails({ addCameraToList }) {
-  const [showAddCamera, setShowAddCamera] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [ip, setIp] = useState('');
   const [port, setPort] = useState('');
   const [camera_name, setCameraName] = useState('');
@@ -11,33 +12,9 @@ function AddCameraDetails({ addCameraToList }) {
   const [password, setPassword] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  useEffect(() => {
-    if (showSuccessMessage) {
-      const timer = setTimeout(() => {
-        setShowAddCamera(true);
-        setShowSuccessMessage(false);
-        setIp('');
-        setPort('');
-        setCameraName('');
-        setUsername('');
-        setPassword('');
-      }, 3000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [showSuccessMessage]);
-
   const handleAddCameraClick = () => {
-    setShowAddCamera(!showAddCamera);
+    setShowModal(!showModal);
     setShowSuccessMessage(false);
-  };
-
-  const newCamera = {
-    ip,
-    port,
-    camera_name,
-    username,
-    password,
   };
 
   const handleSubmit = (e) => {
@@ -48,7 +25,13 @@ function AddCameraDetails({ addCameraToList }) {
       return;
     }
 
-    console.log("Submitting camera details:", newCamera); 
+    const newCamera = {
+      ip,
+      port,
+      camera_name,
+      username,
+      password,
+    };
 
     axios.post(process.env.REACT_APP_BASE_URL + process.env.REACT_APP_ADD_CAMERA, newCamera)
       .then(res => {
@@ -69,62 +52,64 @@ function AddCameraDetails({ addCameraToList }) {
   return (
     <div className="add-camera-container">
       <div className="add-camera-heading-container">
-        <div className="add-camera-box">
-          <h2 className="add-camera-heading">Add Camera</h2>
-        </div>
-        <div className="add-camera-box">
-          <button className="add-camera-icon" onClick={handleAddCameraClick}>+</button>
+        <div className="add-camera-box" onClick={handleAddCameraClick}>
+          <h2 className="add-camera-heading">Add Camera +</h2>
         </div>
       </div>
 
-      {showAddCamera && !showSuccessMessage && (
-        <form className="add-camera-details" onSubmit={handleSubmit}>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <label htmlFor="camera_name">Camera Name:</label>
-          <input
-            type="text"
-            id="camera_name"
-            value={camera_name}
-            onChange={(e) => setCameraName(e.target.value)}
-            required
-          />
-          <label htmlFor="ip">IP Address:</label>
-          <input
-            type="text"
-            id="ip"
-            value={ip}
-            onChange={(e) => setIp(e.target.value)}
-            required
-          />
-          <label htmlFor="port">Port:</label>
-          <input
-            type="text"
-            id="port"
-            value={port}
-            onChange={handlePortChange}
-            required
-          />
-          <button type="submit">Submit</button>
-        </form>
-      )}
-      {showSuccessMessage && (
-        <div className="success-message">Camera added successfully!</div>
-      )}
+      <Modal show={showModal} onHide={handleAddCameraClick}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Camera</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form className="add-camera-details" onSubmit={handleSubmit}>
+            <label htmlFor="username">Username: <span className="mandatory">*</span></label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <label htmlFor="password">Password: <span className="mandatory">*</span></label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <label htmlFor="camera_name">Camera Name: <span className="mandatory">*</span></label>
+            <input
+              type="text"
+              id="camera_name"
+              value={camera_name}
+              onChange={(e) => setCameraName(e.target.value)}
+              required
+            />
+            <label htmlFor="ip">IP Address: <span className="mandatory">*</span></label>
+            <input
+              type="text"
+              id="ip"
+              value={ip}
+              onChange={(e) => setIp(e.target.value)}
+              required
+            />
+            <label htmlFor="port">Port: <span className="mandatory">*</span></label>
+            <input
+              type="text"
+              id="port"
+              value={port}
+              onChange={handlePortChange}
+              required
+            />
+            <Button variant="primary" type="submit">Submit</Button>
+          </form>
+          {showSuccessMessage && (
+            <div className="success-message">Camera added successfully!</div>
+          )}
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }

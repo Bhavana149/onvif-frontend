@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import store from './components/Store';
 import React, { useState } from 'react';
 import Home from './components/pages/Home';
-import Onvif from './components/pages/Onvif';
 import Livestream from './components/pages/LiveStream';
 import Login from './components/login';
 import SignUp from './components/signup';
@@ -31,7 +30,7 @@ function App() {
             <Route path="/home" element={<Layout><Home /></Layout>} />
 
             {/* Other routes */}
-            <Route path="/onvif" element={<Layout><Onvif /></Layout>} />
+            
             <Route path="/livestream" element={<Layout><Livestream /></Layout>} />
             <Route path="/signup" element={<Layout><SignUp /></Layout>} />
           </Routes>
