@@ -89,13 +89,13 @@ function CameraListLive() {
     
       <AddCameraDetails addCameraToList={(newCamera) => setCameras([...cameras, newCamera])} />
       
-      <div className='table-container' style={{ marginTop: '-460px', width: '90%' }}> {/* Apply margin-top and width */}
+      <div className='table-container' style={{ marginTop: '-400px', width: '90%' }}> {/* Apply margin-top and width */}
         <table className='camera-table'>
           <thead>
             <tr>
               <th style={{ fontSize: '1.5em' }}>Sl. No</th>
               <th style={{ fontSize: '1.5em' }}>Camera Name</th>
-              <th>Actions</th>
+              <th  style={{ fontSize: '1.5em' }}>Actions</th>
             </tr>
           </thead>
           <tbody>

@@ -1,8 +1,10 @@
 .add-camera-heading-container {
   display: flex;
   align-items: flex-start;
-  margin-top: -530px;
-  margin-right: 1370px; /* Align items to the top */
+  margin-top: -460px;
+  margin-right: 1570px; 
+  overflow: auto;
+  /* Align items to the top */
 }
 
 .add-camera-box {

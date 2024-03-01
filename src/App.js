@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import store from './components/Store';
 import React, { useState } from 'react';
 import Home from './components/pages/Home';
-import Livestream from './components/pages/LiveStream';
+import Livestream from './components/pages/Cameras';
 import Login from './components/login';
 import SignUp from './components/signup';
 import Layout from './components/Layout';
